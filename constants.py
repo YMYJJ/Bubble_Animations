@@ -18,5 +18,7 @@ COLORS = {
     "text": (0, 0, 0),  # text color
 }
 
+font = pygame.font.SysFOnt("Arial", 23)
+
 pygame.init()  
 
