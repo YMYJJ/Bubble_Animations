@@ -7,7 +7,7 @@ from IPython.display import display, clear_output
 count = 0
 fig, ax1 = plt.subplots()
 # draw axis
-def draw1(l, v):
+def draw(l, v):
 
     global count
     global fig
@@ -47,7 +47,7 @@ def sort(l):
     for i in range(0, len(l)):
         change = False
         for j in range(len(l)-1, i, -1):
-            draw1(l, l[j])
+            draw(l, l[j])
             if l[j] < l[j-1]:
                 l[j], l[j-1] = l[j - 1], l[j]
                 change = True
