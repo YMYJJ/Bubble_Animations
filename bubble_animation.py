@@ -11,12 +11,12 @@ class Bubble:
         self.x = x # x-axis
         self.y = y # y-axis
         self.v = v # constants.NUMBER
-        self.r = r; # radius
+        self.r = r # r
 
         self.bubble = pygame.image.load("images/bubble1.png")
-        self.bubble = pygame.transform.scale(self.bubble, (self.radius * 2, self.radius * 2))
+        self.bubble = pygame.transform.scale(self.bubble, (self.r * 2, self.r * 2))
         self.selected_bubble = pygame.image.load("images/bubble2.png")
-        self.selected_bubble = pygame.transform.scale(self.selected_bubble, (self.radius * 2, self.radius * 2))
+        self.selected_bubble = pygame.transform.scale(self.selected_bubble, (self.r * 2, self.r * 2))
 
     def go_up(self):
         self.y -= constants.DR
@@ -86,16 +86,16 @@ class BubbleManager:
         dbj0 = self.bubblelist[self.j]
         dbj1 = self.bubblelist[self.j+1]
 
-        if dbj0.cy - dbj0.radius > dbj1.cy + dbj1.radius:
+        if dbj0.y - dbj0.r > dbj1.y + dbj1.r:
             #j bubble underneath
             dbj0.up()
             dbj1.down()
-        elif dbj0.cy > dbj1.cy:
+        elif dbj0.y > dbj1.y:
             # bubble intersect
-            cy0 = dbj0.cy
-            dbj0.cy = dbj1.cy - dbj1.radius + dbj0.radius
-            dbj1.cy = cy0 - dbj1.radius + dbj0.radius
-        elif (dbj1.cy - dbj1.radius) - (dbj0.cy + dbj0.radius) < constants.BUBBLE_SPACE:
+            cy0 = dbj0.y
+            dbj0.y = dbj1.y - dbj1.r + dbj0.r
+            dbj1.y = cy0 - dbj1.r + dbj0.r
+        elif (dbj1.y - dbj1.r) - (dbj0.y + dbj0.r) < constants.BUBBLE_SPACE:
             dbj0.up()
             dbj1.down()
         else:
